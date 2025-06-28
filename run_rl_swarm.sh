@@ -106,7 +106,6 @@ if [ "$CONNECT_TO_TESTNET" = true ]; then
     echo "Please login to create an Ethereum Server Wallet"
     cd modal-login
     # Check if the yarn command exists; if not, install Yarn.
-    ls -lah "$ROOT"/modal-login/temp-data/
 
     # Node.js + NVM setup
     if ! command -v node > /dev/null 2>&1; then
@@ -121,7 +120,6 @@ if [ "$CONNECT_TO_TESTNET" = true ]; then
     else
         echo "Node.js is already installed: $(node -v)"
     fi
-    ls -lah "$ROOT"/modal-login/temp-data/
 
     if ! command -v yarn > /dev/null 2>&1; then
         # Detect Ubuntu (including WSL Ubuntu) and install Yarn accordingly
@@ -136,7 +134,6 @@ if [ "$CONNECT_TO_TESTNET" = true ]; then
             npm install -g --silent yarn
         fi
     fi
-    ls -lah "$ROOT"/modal-login/temp-data/
 
     ENV_FILE="$ROOT"/modal-login/.env
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -149,7 +146,6 @@ if [ "$CONNECT_TO_TESTNET" = true ]; then
         sed -i "3s/.*/SWARM_CONTRACT_ADDRESS=$SWARM_CONTRACT/" "$ENV_FILE"
         sed -i "4s/.*/PRG_CONTRACT_ADDRESS=$PRG_CONTRACT/" "$ENV_FILE"
     fi
-    ls -lah "$ROOT"/modal-login/temp-data/
 
 
     # Docker image already builds it, no need to again.
@@ -159,7 +155,6 @@ if [ "$CONNECT_TO_TESTNET" = true ]; then
         yarn build > "$ROOT/logs/yarn.log" 2>&1
     fi
     yarn start >> "$ROOT/logs/yarn.log" 2>&1 & # Run in background and log output
-    ls -lah "$ROOT"/modal-login/temp-data/
 
     SERVER_PID=$!  # Store the process ID
     echo "Started server process: $SERVER_PID"
@@ -175,7 +170,6 @@ if [ "$CONNECT_TO_TESTNET" = true ]; then
     else
         echo_green ">> Please open http://localhost:3000 in your host browser."
     fi
-    ls -lah "$ROOT"/modal-login/temp-data/
 
     cd ..
 
