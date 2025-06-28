@@ -31,6 +31,7 @@ if [ -n "$DOCKER" ]; then
         /home/gensyn/rl_swarm/keys
         /home/gensyn/rl_swarm/configs
         /home/gensyn/rl_swarm/logs
+        /home/gensyn/rl_swarm/out
     )
 
     for volume in ${volumes[@]}; do

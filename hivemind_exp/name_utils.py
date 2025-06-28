@@ -89,6 +89,10 @@ def get_name_from_peer_id(peer_id: str, no_spaces=False):
     name = f"{adj1} {adj2} {animal}"
     if no_spaces:
         name = "_".join(name.split(" "))
+    with open("/home/gensyn/rl_swarm/out/peer_id", "w") as f:
+        f.write(peer_id)
+    with open("/home/gensyn/rl_swarm/out/node_name", "w") as f:
+        f.write(name)
     return name
 
 
