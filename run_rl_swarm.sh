@@ -27,19 +27,19 @@ DOCKER=${DOCKER:-""}
 GENSYN_RESET_CONFIG=${GENSYN_RESET_CONFIG:-""}
 
 # Bit of a workaround for the non-root docker container.
-if [ -n "$DOCKER" ]; then
-    volumes=(
-        /home/gensyn/rl_swarm/modal-login/temp-data
-        /home/gensyn/rl_swarm/keys
-        /home/gensyn/rl_swarm/configs
-        /home/gensyn/rl_swarm/logs
-        /home/gensyn/rl_swarm/out
-    )
+# if [ -n "$DOCKER" ]; then
+#     volumes=(
+#         /home/gensyn/rl_swarm/modal-login/temp-data
+#         /home/gensyn/rl_swarm/keys
+#         /home/gensyn/rl_swarm/configs
+#         /home/gensyn/rl_swarm/logs
+#         /home/gensyn/rl_swarm/out
+#     )
 
-    for volume in ${volumes[@]}; do
-        sudo chown -R 1001:1001 $volume
-    done
-fi
+#     for volume in ${volumes[@]}; do
+#         sudo chown -R 1001:1001 $volume
+#     done
+# fi
 
 # Will ignore any visible GPUs if set.
 CPU_ONLY=${CPU_ONLY:-""}
@@ -226,10 +226,10 @@ else
     cp "$ROOT/rgym_exp/config/rg-swarm.yaml" "$ROOT/configs/rg-swarm.yaml"
 fi
 
-if [ -n "$DOCKER" ]; then
-    # Make it easier to edit the configs on Linux systems.
-    sudo chmod -R 0777 /home/gensyn/rl_swarm/configs
-fi
+# if [ -n "$DOCKER" ]; then
+#     # Make it easier to edit the configs on Linux systems.
+#     sudo chmod -R 0777 /home/gensyn/rl_swarm/configs
+# fi
 
 echo_green ">> Done!"
 
