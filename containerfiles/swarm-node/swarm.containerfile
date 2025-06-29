@@ -23,15 +23,15 @@ RUN apt update -y && \
     tk-dev \
     libxml2-dev libxmlsec1-dev \
     git curl jq neovim && \
-    useradd gensyn --user-group --create-home --shell /bin/bash && \
-    echo "gensyn ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/gensyn && \
+    # useradd gensyn --user-group --create-home --shell /bin/bash && \
+    # echo "gensyn ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/gensyn && \
     echo 'export PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc && \
     echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc && \
     apt-get autoremove -y && \
     apt-get clean
 
 WORKDIR /home/gensyn
-USER gensyn
+# USER gensyn
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 ENV NVM_DIR=/home/gensyn/.nvm NODE_VERSION=22.16.0
