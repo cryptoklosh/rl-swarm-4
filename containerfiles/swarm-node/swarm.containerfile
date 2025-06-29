@@ -50,7 +50,7 @@ RUN ./install_pip.sh
 
 ENV PATH="/root/.pyenv/shims:/root/.pyenv/bin:$NVM_DIR/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 
-COPY --chown=gensyn ./modal-login /root/rl_swarm/modal-login
+COPY ./modal-login /root/rl_swarm/modal-login
 RUN cd /root/rl_swarm/modal-login && yarn install --immutable && yarn build
 
 RUN pip install gensyn-genrl==0.1.6
