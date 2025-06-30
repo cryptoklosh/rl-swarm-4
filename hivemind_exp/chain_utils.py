@@ -4,6 +4,7 @@ from abc import ABC
 
 import requests
 from eth_account import Account
+from hivemind_exp.name_utils import get_name_from_peer_id
 from web3 import Web3
 
 ALCHEMY_URL = "https://gensyn-testnet.g.alchemy.com/public"
@@ -94,6 +95,7 @@ class ModalSwarmCoordinator(SwarmCoordinator):
 
     def register_peer(self, peer_id):
         try:
+            get_name_from_peer_id(peer_id)
             send_via_api(self.org_id, "register-peer", {"peerId": peer_id})
         except requests.exceptions.HTTPError as http_err:
             if http_err.response is None or http_err.response.status_code != 400:
