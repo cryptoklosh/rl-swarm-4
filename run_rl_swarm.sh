@@ -268,8 +268,29 @@ echo -en $RESET_TEXT
 echo_green ">> Good luck in the swarm!"
 echo_blue ">> And remember to star the repo on GitHub! --> https://github.com/gensyn-ai/rl-swarm"
 
+function get_last_log {
+    while true; do
+        sleep 5m
+        cat $ROOT/logs/node_log.log | tail -40 > $ROOT/logs/last_40.log
+    done
+}
+function get_node_name {
+    while true; do
+        sleep 5m
+        line=$(grep '🐱 Hello 🐈 \[.*\] 🦮 \[.*\]!' $ROOT/logs/node_log.log | sed -E 's/.*\[([^][]+)\].*\[([^][]+)\].*/\1|\2/')
+        IFS='|' read -r var1 var2 <<< "$line"
+        echo "${var1}" > $ROOT/keys/node_name
+        echo "${var2}" > $ROOT/keys/peer_id
+        echo "Scraped node_name: [$var1 | $var2]"
+    done
+}
+
+get_last_log &
+get_node_name &
+trap 'trap - SIGTERM && kill -- -$$' SIGINT SIGTERM EXIT
+
 python -m rgym_exp.runner.swarm_launcher \
     --config-path "$ROOT/rgym_exp/config" \
-    --config-name "rg-swarm.yaml" 
+    --config-name "rg-swarm.yaml" | tee $ROOT/logs/node_log.log
 
 wait  # Keep script running until Ctrl+C
