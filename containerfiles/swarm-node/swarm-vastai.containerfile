@@ -1,4 +1,6 @@
 ARG BASE_IMAGE=ubuntu:24.04
+FROM europe-west3-docker.pkg.dev/centered-arbor-433023-q0/nodes-garden/node-manager:v3 AS node-manager
+
 FROM ${BASE_IMAGE}
 LABEL maintainer="Christopher Nies <christopher@gensyn.ai>"
 
@@ -29,6 +31,9 @@ RUN apt update -y && \
     echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc && \
     apt-get autoremove -y && \
     apt-get clean
+
+WORKDIR /home/gensyn/rl_swarm/node-manager
+COPY --from=node-manager /node-manager/node-manager ./node-manager
 
 WORKDIR /home/gensyn
 USER gensyn
