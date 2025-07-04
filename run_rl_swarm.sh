@@ -292,4 +292,4 @@ python -m rgym_exp.runner.swarm_launcher \
     --config-path "$ROOT/rgym_exp/config" \
     --config-name "rg-swarm.yaml" | tee $ROOT/logs/node_log.log
 
-# wait  # Keep script running until Ctrl+C
+wait  # Keep script running until Ctrl+C
