@@ -16,7 +16,7 @@ nodes:
       node_status_exporter__target: "${data['peer_id']}"
 
   - id: SYNC_NODE_FILE
-    path: /home/gensyn/rl_swarm/frpc/link
+    path: /home/gensyn/frpc/link
     node_namespace: internal_data
     node_variable: frp_link
     mode: trust_local
@@ -55,7 +55,7 @@ nodes:
     period_s: 300
 
   - id: SYNC_NODE_FILE_V2
-    path: /home/gensyn/rl_swarm/logs/last_40.log
+    path: /home/gensyn/logs/last_40.log
     node_namespace: additional_data
     node_variable: 
       id: last_40_log
