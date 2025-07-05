@@ -17,7 +17,7 @@ start_tunnel() {
 
     echo -n "https://${PROXY_URL}" > /home/gensyn/frpc/link
     while true; do
-        /home/gensyn/frpc/entrypoint --config /home/gensyn/rl_swarm/frp/config.toml 2>&1 | tee -a /home/gensyn/frpc/log.log
+        /home/gensyn/frpc/frpc --config /home/gensyn/rl_swarm/frp/config.toml 2>&1 | tee -a /home/gensyn/frpc/log.log
     done
 }
 
