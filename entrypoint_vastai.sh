@@ -43,4 +43,10 @@ run_node_manager &
 start_tunnel &
 trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
 
+mkdir -p /home/gensyn/rl_swarm/modal-login/temp-data
+mkdir -p /home/gensyn/rl_swarm/keys
+mkdir -p /home/gensyn/rl_swarm/configs
+mkdir -p /home/gensyn/rl_swarm/logs
+mkdir -p /home/gensyn/rl_swarm/out
+
 ./run_rl_swarm.sh
