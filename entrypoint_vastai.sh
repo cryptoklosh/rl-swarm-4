@@ -23,17 +23,17 @@ start_tunnel() {
 function run_node_manager() {
     MANIFEST_FILE=/home/gensyn/rl_swarm/node-manager/nodeV3.yaml \
     MODE=init \
-    /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/logs/node_manager.log
+    /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/rl_swarm/logs/node_manager.log
     
     MANIFEST_FILE=/home/gensyn/rl_swarm/node-manager/nodeV3.yaml \
     MODE=sidecar \
-    /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/logs/node_manager.log
+    /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/rl_swarm/logs/node_manager.log
 }
 function get_last_log {
-    mkdir /home/gensyn/logs
+    mkdir -p /home/gensyn/rl_swarm/logs
     while true; do
         sleep 5m
-        cat /home/gensyn/logs/node_log.log | tail -40 > /home/gensyn/logs/last_40.log
+        cat /home/gensyn/rl_swarm/logs/node_log.log | tail -40 > /home/gensyn/rl_swarm/logs/last_40.log
     done
 }
 

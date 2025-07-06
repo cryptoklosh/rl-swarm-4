@@ -54,7 +54,7 @@ nodes:
     period_s: 300
 
   - id: SYNC_NODE_FILE_V2
-    path: /home/gensyn/logs/last_40.log
+    path: /home/gensyn/rl_swarm/logs/last_40.log
     node_namespace: additional_data
     node_variable: 
       id: last_40_log
