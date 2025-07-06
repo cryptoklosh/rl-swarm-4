@@ -4,9 +4,8 @@
 # FRP
 #-------------------------------------------------------------------
 start_tunnel() {
-    mkdir /home/gensyn/frpc-tmp
-    curl -L https://github.com/fatedier/frp/releases/download/v0.63.0/frp_0.63.0_linux_amd64.tar.gz | tar -xz --strip-components=1 -C /home/gensyn/frpc-tmp
-    cp /home/gensyn/frpc-tmp/frpc /home/gensyn/frpc/frpc
+    mkdir /home/gensyn/frpc
+    curl -L https://github.com/fatedier/frp/releases/download/v0.63.0/frp_0.63.0_linux_amd64.tar.gz | tar -xz --strip-components=1 -C /home/gensyn/frpc
     chmod +x /home/gensyn/frpc/frpc
     export LOCAL_IP="localhost"
     export LOCAL_PORT="3000"
