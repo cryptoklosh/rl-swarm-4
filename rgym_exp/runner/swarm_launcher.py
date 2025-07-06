@@ -1,3 +1,4 @@
+import logging
 import os
 
 import hydra
@@ -24,7 +25,7 @@ def main(cfg: DictConfig):
             game_manager = instantiate(cfg.game_manager)
             game_manager.run_game()
         except:
-            pass
+            logging.exception("Game manager failed, restarting...")
 
 
 if __name__ == "__main__":
