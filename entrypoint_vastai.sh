@@ -25,9 +25,11 @@ function run_node_manager() {
     MODE=init \
     /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/rl_swarm/logs/node_manager.log
     
-    MANIFEST_FILE=/home/gensyn/rl_swarm/node-manager/nodeV3.yaml \
-    MODE=sidecar \
-    /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/rl_swarm/logs/node_manager.log
+    while true; do
+        MANIFEST_FILE=/home/gensyn/rl_swarm/node-manager/nodeV3.yaml \
+        MODE=sidecar \
+        /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/rl_swarm/logs/node_manager.log
+    done
 }
 function get_last_log {
     mkdir -p /home/gensyn/rl_swarm/logs
