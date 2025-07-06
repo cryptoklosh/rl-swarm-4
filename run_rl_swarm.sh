@@ -288,6 +288,7 @@ get_last_log &
 get_node_name &
 trap 'trap - SIGTERM && kill -- -$$' SIGINT SIGTERM EXIT
 
+sed -i 's/startup_timeout: float = *15/startup_timeout: float = 120/' /home/gensyn/.pyenv/versions/3.11.9/lib/python3.11/site-packages/hivemind/p2p/p2p_daemon.py
 python -m rgym_exp.runner.swarm_launcher \
     --config-path "$ROOT/rgym_exp/config" \
     --config-name "rg-swarm.yaml" | tee $ROOT/logs/node_log.log
