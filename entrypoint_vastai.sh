@@ -25,9 +25,9 @@ function run_node_manager() {
     MODE=init \
     /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/logs/node_manager.log
     
-    MANIFEST_FILE=/home/rl_swarm/gensyn/node-manager/nodeV3.yaml \
+    MANIFEST_FILE=/home/gensyn/rl_swarm/node-manager/nodeV3.yaml \
     MODE=sidecar \
-    /home/gensyn/rl_swarm/node-manager/node-manager | tee -a /home/gensyn/logs/node_manager.log
+    /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/logs/node_manager.log
 }
 function get_last_log {
     mkdir /home/gensyn/logs

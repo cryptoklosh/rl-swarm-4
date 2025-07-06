@@ -8,9 +8,8 @@ nodes:
     state: deployment
     version: v0.5.2
     internal_data:
-      node__id: "${env:NODE_ID}"
-      k8s__pod_name: "${env:POD_NAME}"
-      host__ip: "${env:HOST_IP}"
+      vast__id: "${env:CONTAINER_ID}"
+      node__id: ${env:NODE_ID}
       node_status_exporter__ver: "v2"
       node_status_exporter__module: "gensyn"
       node_status_exporter__target: "${data['peer_id']}"
@@ -90,12 +89,10 @@ nodes:
 steps:
 - id: PUBLISH_SERVICE
   name: node
-  host_ip: "${env:HOST_IP}:22"
-  node_id: "${env:NODE_ID}"
+  host_ip: 1.1.1.1:22
+  node_id: ${env:NODE_ID}
   state: online
   internal_data:
     service__id: node
-    service__type: k8s_container
-    node__id: "${env:NODE_ID}"
-    k8s__pod_name: "${env:POD_NAME}"
-    host__ip: "${env:HOST_IP}"
+    service__type: vastai
+    node__id: ${env:NODE_ID}
