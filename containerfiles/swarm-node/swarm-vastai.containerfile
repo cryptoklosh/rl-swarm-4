@@ -68,5 +68,8 @@ ENV DOCKER=t
 ENV IDENTITY_PATH=/home/gensyn/rl_swarm/keys/swarm.pem
 
 COPY --chown=gensyn . /home/gensyn/rl_swarm
+USER root
+RUN chown -R gensyn:gensyn /home/gensyn/rl_swarm
+USER gensyn
 
 CMD [ "bash", "-c", "/home/gensyn/rl_swarm/entrypoint_vastai.sh" ]
