@@ -59,6 +59,7 @@ RUN pip install hivemind@git+https://github.com/gensyn-ai/hivemind@639c964a8019d
 
 WORKDIR /home/gensyn/rl_swarm
 ENV DOCKER=t
+ENV CPU=t
 ENV IDENTITY_PATH=/home/gensyn/rl_swarm/keys/swarm.pem
 
 COPY --chown=gensyn . /home/gensyn/rl_swarm
