@@ -290,7 +290,6 @@ trap 'trap - SIGTERM && kill -- -$$' SIGINT SIGTERM EXIT
 
 if [ -n "$CPU" ]; then
     sed -i -E 's/num_train_samples: 2/num_train_samples: 1/' rgym_exp/config/rg-swarm.yaml
-    sed -i -E 's/num_generations: 2/num_generations: 1/' rgym_exp/config/rg-swarm.yaml
 fi
 
 python -m rgym_exp.runner.swarm_launcher \
