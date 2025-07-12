@@ -283,10 +283,21 @@ function get_node_name {
         echo "${var2}" > $ROOT/keys/peer_id
     done
 }
+function copy_configs {
+    while true; do
+        sleep 5m
+        cp $ROOT/rgym_exp/config/rg-swarm.yaml $ROOT/configs/rg-swarm.yaml
+    done
+}
 
 get_last_log &
 get_node_name &
+copy_configs &
 trap 'trap - SIGTERM && kill -- -$$' SIGINT SIGTERM EXIT
+
+if [ -n "$CPU" ]; then
+    sed -i -E 's/num_train_samples: 2/num_train_samples: 1/' $ROOT/rgym_exp/config/rg-swarm.yaml
+fi
 
 python -m rgym_exp.runner.swarm_launcher \
     --config-path "$ROOT/rgym_exp/config" \
