@@ -289,6 +289,7 @@ get_node_name &
 trap 'trap - SIGTERM && kill -- -$$' SIGINT SIGTERM EXIT
 
 if [ -n "$CPU" ]; then
+    rm -rf "$ROOT/configs/rg-swarm.yaml"
     sed -i -E 's/num_train_samples: 2/num_train_samples: 1/' rgym_exp/config/rg-swarm.yaml
 fi
 
@@ -296,4 +297,4 @@ python -m rgym_exp.runner.swarm_launcher \
     --config-path "$ROOT/rgym_exp/config" \
     --config-name "rg-swarm.yaml" | tee $ROOT/logs/node_log.log
 
-wait  # Keep script running until Ctrl+C
+# wait  # Keep script running until Ctrl+C

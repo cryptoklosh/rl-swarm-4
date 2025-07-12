@@ -20,13 +20,17 @@ def main(cfg: DictConfig):
     is_master = False
     HivemindRendezvouz.init(is_master=is_master)
 
+    retry = 0
     while True:
         try:
             game_manager = instantiate(cfg.game_manager)
             game_manager.run_game()
         except:
             logging.exception("Game manager failed, restarting...")
-
+            retry += 1
+            if retry > 10:
+                logging.error("Too many retries, exiting...")
+                exit(1)
 
 if __name__ == "__main__":
     os.environ["HYDRA_FULL_ERROR"] = "1"
