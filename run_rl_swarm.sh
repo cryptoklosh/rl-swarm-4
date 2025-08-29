@@ -257,14 +257,14 @@ HUGGINGFACE_ACCESS_TOKEN="None"
 #     echo_green ">> Using default model from config"
 # fi
 
-echo -en $GREEN_TEXT
-read -p ">> Would you like your model to participate in the AI Prediction Market? [Y/n] " yn
-if [ "$yn" = "n" ] || [ "$yn" = "N" ]; then
-    PRG_GAME=false
-    echo_green ">> Playing PRG game: false"
-else
-    echo_green ">> Playing PRG game: true"
-fi
+# echo -en $GREEN_TEXT
+# read -p ">> Would you like your model to participate in the AI Prediction Market? [Y/n] " yn
+# if [ "$yn" = "n" ] || [ "$yn" = "N" ]; then
+#     PRG_GAME=false
+#     echo_green ">> Playing PRG game: false"
+# else
+#     echo_green ">> Playing PRG game: true"
+# fi
 
 echo -en $RESET_TEXT
 echo_green ">> Good luck in the swarm!"
