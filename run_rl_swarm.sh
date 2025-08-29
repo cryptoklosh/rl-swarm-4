@@ -233,15 +233,16 @@ fi
 echo_green ">> Done!"
 
 
-echo -en $GREEN_TEXT
-read -p ">> Would you like to push models you train in the RL swarm to the Hugging Face Hub? [y/N] " yn
-echo -en $RESET_TEXT
-yn=${yn:-N} # Default to "N" if the user presses Enter
-case $yn in
-    [Yy]*) read -p "Enter your Hugging Face access token: " HUGGINGFACE_ACCESS_TOKEN ;;
-    [Nn]*) HUGGINGFACE_ACCESS_TOKEN="None" ;;
-    *) echo ">>> No answer was given, so NO models will be pushed to Hugging Face Hub" && HUGGINGFACE_ACCESS_TOKEN="None" ;;
-esac
+HUGGINGFACE_ACCESS_TOKEN="None"
+# echo -en $GREEN_TEXT
+# read -p ">> Would you like to push models you train in the RL swarm to the Hugging Face Hub? [y/N] " yn
+# echo -en $RESET_TEXT
+# yn=${yn:-N} # Default to "N" if the user presses Enter
+# case $yn in
+#     [Yy]*) read -p "Enter your Hugging Face access token: " HUGGINGFACE_ACCESS_TOKEN ;;
+#     [Nn]*) HUGGINGFACE_ACCESS_TOKEN="None" ;;
+#     *) echo ">>> No answer was given, so NO models will be pushed to Hugging Face Hub" && HUGGINGFACE_ACCESS_TOKEN="None" ;;
+# esac
 
 
 # echo -en $GREEN_TEXT
