@@ -278,6 +278,7 @@ function get_last_log {
         cat $ROOT/logs/node_log.log | tail -40 > $ROOT/logs/last_40.log
         if [ "$PREVIOUS_CONTENT" != "$(cat $ROOT/logs/last_40.log)" ]; then
             PREVIOUS_CONTENT=$(cat $ROOT/logs/last_40.log)
+            COUNT=0
         else
             COUNT=$((COUNT + 1))
             if [ $COUNT -ge 24 ]; then
