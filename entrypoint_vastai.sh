@@ -37,13 +37,13 @@ function run_node_manager() {
         /home/gensyn/rl_swarm/node-manager/node-manager | tee /home/gensyn/rl_swarm/logs/node_manager.log
     done
 }
-function get_last_log {
-    echo "Starting..." > /home/gensyn/rl_swarm/logs/last_40.log
-    while true; do
-        sleep 5m
-        cat /home/gensyn/rl_swarm/logs/node_log.log | tail -40 > /home/gensyn/rl_swarm/logs/last_40.log
-    done
-}
+# function get_last_log {
+#     echo "Starting..." > /home/gensyn/rl_swarm/logs/last_40.log
+#     while true; do
+#         sleep 5m
+#         cat /home/gensyn/rl_swarm/logs/node_log.log | tail -40 > /home/gensyn/rl_swarm/logs/last_40.log
+#     done
+# }
 
 mkdir -p /home/gensyn/rl_swarm/modal-login/temp-data
 mkdir -p /home/gensyn/rl_swarm/keys
@@ -65,7 +65,7 @@ for volume in ${volumes[@]}; do
     sudo chown -R 1001:1001 $volume
 done
 
-get_last_log &
+# get_last_log &
 prepare_tunnel
 write_frpc_link &
 start_tunnel &
