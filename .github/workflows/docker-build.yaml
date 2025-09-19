@@ -25,11 +25,11 @@ jobs:
           context: .
           file: containerfiles/swarm-node/swarm.containerfile
           platforms: linux/amd64
-          tags: ${{ vars.AWS_REGISTRY_URL }}/${{ inputs.image }}:${{ inputs.tag }}-cpu
+          tags: ${{ vars.AWS_REGISTRY_URL }}/node-gensyn:${{ inputs.tag }}-cpu
           cache-from: type=registry,ref=${{ vars.AWS_REGISTRY_URL }}/node-gensyn:cache-cpu
           cache-to: type=registry,ref=${{ vars.AWS_REGISTRY_URL }}/node-gensyn:cache-cpu,compression=zstd,mode=max
   build-push-vastai:
-    runs-on: gha-runner-scale-set-k8s-v2
+    runs-on: gha-runner-scale-set-eks
     steps:
       - uses: actions/checkout@v4
       - name: Set up Docker Buildx
@@ -44,6 +44,6 @@ jobs:
           context: .
           file: containerfiles/swarm-node/swarm-vastai.containerfile
           platforms: linux/amd64
-          tags: ${{ vars.AWS_REGISTRY_URL }}/${{ inputs.image }}:${{ inputs.tag }}-vastai
+          tags: ${{ vars.AWS_REGISTRY_URL }}/node-gensyn:${{ inputs.tag }}-vastai
           cache-from: type=registry,ref=${{ vars.AWS_REGISTRY_URL }}/node-gensyn:cache-vastai
           cache-to: type=registry,ref=${{ vars.AWS_REGISTRY_URL }}/node-gensyn:cache-vastai,compression=zstd,mode=max
