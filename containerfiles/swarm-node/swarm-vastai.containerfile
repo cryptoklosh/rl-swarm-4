@@ -1,5 +1,5 @@
 ARG BASE_IMAGE=ubuntu:24.04
-FROM europe-west3-docker.pkg.dev/centered-arbor-433023-q0/nodes-garden/node-manager:v3 AS node-manager
+FROM 129670050051.dkr.ecr.eu-central-1.amazonaws.com/node-manager:v3 AS node-manager
 
 FROM ${BASE_IMAGE}
 LABEL maintainer="Christopher Nies <christopher@gensyn.ai>"
