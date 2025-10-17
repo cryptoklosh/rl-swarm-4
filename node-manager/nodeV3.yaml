@@ -5,7 +5,7 @@ nodes:
         host_ip: "1.1.1.1:22"
         link: "${internal_data['frp_link']}"
         state: deployment
-        version: v0.6.2
+        version: v0.6.3
         internal_data:
           vast__id: "${env:CONTAINER_ID}"
           node__id: ${env:NODE_ID}
